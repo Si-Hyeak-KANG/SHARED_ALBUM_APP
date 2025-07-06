@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:gachi_ganjik/screens/photos/photo_album_main_screen.dart';
+import 'package:gachi_ganjik/screens/common/main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       context,
       MaterialPageRoute(
         builder: (context) =>
-            PhotoAlbumMainScreen(),
+            MainScreen(),
       ),
     );
   }
@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
         backgroundColor: Colors.blue,
         body: Center(
           child: Text('splash screen'),
-        )
+        ),
     );
   }
 
