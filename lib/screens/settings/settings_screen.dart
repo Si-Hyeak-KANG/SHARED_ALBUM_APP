@@ -1,4 +1,3 @@
-// lib/screens/settings_screen.dart (경로에 맞게 수정!)
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -9,7 +8,7 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('설정'),
-        backgroundColor: Colors.grey[200], // 설정 페이지 느낌 나게 회색으로 해볼까?
+        backgroundColor: Colors.grey[200],
       ),
       body: const Center(
         child: Text(

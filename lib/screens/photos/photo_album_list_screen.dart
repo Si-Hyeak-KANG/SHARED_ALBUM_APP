@@ -37,10 +37,12 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
                     },
                     style: OutlinedButton.styleFrom(
                       fixedSize: const Size(double.infinity, 45.0),
+                      foregroundColor: Colors.black,
                     ),
                     icon: const Icon(
                       Icons.camera_alt_outlined,
                       size: 28.0,
+                      color: Colors.black,
                     ),
                     label: const Text('사진 찍어주기'),
                   ),
@@ -53,10 +55,12 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
                     },
                     style: OutlinedButton.styleFrom(
                       fixedSize: const Size(double.infinity, 45.0),
+                      foregroundColor: Colors.black,
                     ),
                     icon: const Icon(
                       Icons.photo_album_outlined,
                       size: 28.0,
+                      color: Colors.black,
                     ),
                     label: const Text('사진첩 만들기'),
                   ),

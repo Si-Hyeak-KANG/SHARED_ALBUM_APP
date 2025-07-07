@@ -25,6 +25,8 @@ class CustomBottomNavBar extends StatelessWidget {
         );
       },
       iconSize: 30.0,
+      selectedItemColor: Colors.black,
+      unselectedItemColor: Colors.grey,
       items: [
         BottomNavigationBarItem(
           icon: Padding(
