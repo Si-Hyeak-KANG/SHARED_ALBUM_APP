@@ -20,7 +20,7 @@ class CustomBottomNavBar extends StatelessWidget {
       onTap: (index) {
         pageController.animateToPage(
           index,
-          duration: const Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 100),
           curve: Curves.fastEaseInToSlowEaseOut,
         );
       },
@@ -30,7 +30,7 @@ class CustomBottomNavBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: Padding(
-            padding: const EdgeInsets.only(top: 5.0),
+            padding: const EdgeInsets.only(top: 3.0),
             child: Icon(
               currentPage == AppPages.photo
                   ? Icons.camera_alt // 채워진 아이콘
@@ -41,7 +41,7 @@ class CustomBottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Padding(
-            padding: const EdgeInsets.only(top: 5.0),
+            padding: const EdgeInsets.only(top: 3.0),
             child: Icon(
               currentPage == AppPages.users
                   ? Icons.person // 채워진 아이콘
@@ -52,7 +52,7 @@ class CustomBottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Padding(
-            padding: const EdgeInsets.only(top: 5.0),
+            padding: const EdgeInsets.only(top: 3.0),
             child: Icon(
               currentPage == AppPages.settings
                   ? Icons.settings // 채워진 아이콘

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gachi_ganjik/widgets/custom_bottom_navbar.dart';
-
-import '../../utils/app_pages.dart';
+import 'package:gachi_ganjik/screens/photos/enter_other_album_num_screen.dart';
 
 class PhotoAlbumListScreen extends StatefulWidget {
   const PhotoAlbumListScreen({super.key}); // 생성자 수정!
@@ -26,14 +24,17 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
                   child: OutlinedButton.icon(
                     onPressed: () {
-                      // 사진 찍기 기능 연결 예정
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => EnterOtherAlbumNumScreen()),
+                      );
                     },
                     style: OutlinedButton.styleFrom(
                       fixedSize: const Size(double.infinity, 45.0),
