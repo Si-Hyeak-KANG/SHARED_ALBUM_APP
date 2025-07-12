@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gachi_ganjik/widgets/common_app_bar_with_title.dart';
 
 class EnterOtherAlbumNumScreen extends StatelessWidget {
   const EnterOtherAlbumNumScreen({super.key});
@@ -6,8 +7,9 @@ class EnterOtherAlbumNumScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('사진 찍어주기'),
+      appBar: CommonAppBarWithTitle(
+        titleText: "사진 찍어주기",
+        isActions: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -46,7 +48,8 @@ class EnterOtherAlbumNumScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     filled: false,
                     enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade400, width: 1.0),
+                      borderSide:
+                          BorderSide(color: Colors.grey.shade400, width: 1.0),
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.blue, width: 2.0),
@@ -102,5 +105,4 @@ class EnterOtherAlbumNumScreen extends StatelessWidget {
       ),
     );
   }
-
 }

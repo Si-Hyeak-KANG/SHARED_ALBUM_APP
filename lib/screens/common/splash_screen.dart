@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:gachi_ganjik/screens/common/main_screen.dart';
 
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -23,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   startTime() {
-    var duration = const Duration(seconds: 3);
+    var duration = const Duration(seconds: 30);
     return Timer(duration, navigationPage);
   }
 
@@ -40,10 +41,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue,
-        body: Center(
-          child: Text('splash screen'),
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Image.asset(
+          'assets/images/app_logo.png',
+            width: 300,
+            fit: BoxFit.contain,
         ),
+      ),
     );
   }
 

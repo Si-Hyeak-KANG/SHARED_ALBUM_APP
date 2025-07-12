@@ -18,8 +18,19 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(20.0),
-        child: AppBar(),
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: AppBar(
+          title: Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Image.asset(
+              'assets/images/header_app_logo.png',
+              width: 150,
+              height: 250,
+              fit: BoxFit.contain, // contain으로 바꿔서 비율 유지하면서 공간에 맞춰보자!
+            ),
+          ),
+          centerTitle: false,
+        ),
       ),
       body: Column(
         children: [
@@ -33,7 +44,8 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => EnterOtherAlbumNumScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => EnterOtherAlbumNumScreen()),
                       );
                     },
                     style: OutlinedButton.styleFrom(
