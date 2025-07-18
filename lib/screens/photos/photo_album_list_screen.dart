@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gachi_ganjik/screens/photos/enter_other_album_num_screen.dart';
+import 'package:gachi_ganjik/screens/photos/make_new_album_screen.dart';
+import 'package:gachi_ganjik/screens/photos/photo_album_screen.dart';
 
 class PhotoAlbumListScreen extends StatefulWidget {
   const PhotoAlbumListScreen({super.key}); // 생성자 수정!
@@ -64,7 +66,11 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
                 Expanded(
                   child: OutlinedButton.icon(
                     onPressed: () {
-                      // 사진첩 만들기 기능 연결 예정
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MakeNewAlbumScreen()),
+                      );
                     },
                     style: OutlinedButton.styleFrom(
                       fixedSize: const Size(double.infinity, 45.0),
@@ -96,33 +102,45 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
                   childAspectRatio: 3 / 4, // 가로:세로 비율 조절
                 ),
                 itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            color: Colors.grey.shade200,
-                            child: const Icon(
-                              Icons.image_outlined,
-                              size: 50,
-                              color: Colors.grey,
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              PhotoAlbumScreen(albumTitle: albumTitles[index]),
+                        ),
+                      );
+                    },
+                    borderRadius: BorderRadius.circular(8),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey.shade300),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              color: Colors.grey.shade200,
+                              child: const Icon(
+                                Icons.image_outlined,
+                                size: 50,
+                                color: Colors.grey,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            albumTitles[index],
-                            style: const TextStyle(fontSize: 16),
-                            textAlign: TextAlign.center,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              albumTitles[index],
+                              style: const TextStyle(fontSize: 16),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },
