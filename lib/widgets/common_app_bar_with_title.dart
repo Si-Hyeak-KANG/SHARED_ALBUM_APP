@@ -14,9 +14,12 @@ class CommonAppBarWithTitle extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(
-        titleText,
-        style: TextStyle(letterSpacing: 1.2),
+      title: Padding(
+        padding: const EdgeInsets.only(top: 4.0),
+        child: Text(
+          titleText,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        ),
       ),
       centerTitle: true,
       actions: isActions
