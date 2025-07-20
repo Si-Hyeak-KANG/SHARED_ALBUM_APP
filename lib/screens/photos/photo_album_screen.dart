@@ -94,7 +94,6 @@ class _PhotoAlbumScreenState extends State<PhotoAlbumScreen> {
       body: CustomScrollView(
         controller: _scrollController, // ✨ 여기! 스크롤 컨트롤러 연결!
         slivers: [
-          // 기존 코드와 동일 (앨범 커버)
           SliverToBoxAdapter(
             child: Stack(
               children: [

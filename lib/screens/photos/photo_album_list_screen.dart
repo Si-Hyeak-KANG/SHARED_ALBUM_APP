@@ -4,7 +4,7 @@ import 'package:gachi_ganjik/screens/photos/make_new_album_screen.dart';
 import 'package:gachi_ganjik/screens/photos/photo_album_screen.dart';
 
 class PhotoAlbumListScreen extends StatefulWidget {
-  const PhotoAlbumListScreen({super.key}); // 생성자 수정!
+  const PhotoAlbumListScreen({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -15,6 +15,15 @@ class PhotoAlbumListScreen extends StatefulWidget {
 class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
   final List<String> albumTitles =
       List.generate(6, (index) => 'Title ${index + 1}');
+
+  final List<String> albumImages = [
+    'assets/images/photo1.png',
+    'assets/images/photo2.png',
+    'assets/images/photo3.png',
+    'assets/images/photo4.png',
+    'assets/images/photo5.png',
+    'assets/images/photo6.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +37,7 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
               'assets/images/header_app_logo.png',
               width: 150,
               height: 250,
-              fit: BoxFit.contain, // contain으로 바꿔서 비율 유지하면서 공간에 맞춰보자!
+              fit: BoxFit.contain,
             ),
           ),
           centerTitle: false,
@@ -89,7 +98,6 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
           ),
 
           SizedBox(height: 20),
-          // 앨범 리스트 (GridView)
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -122,12 +130,33 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Expanded(
-                            child: Container(
-                              color: Colors.grey.shade200,
-                              child: const Icon(
-                                Icons.image_outlined,
-                                size: 50,
-                                color: Colors.grey,
+                            child: ClipRRect( // 이미지가 모서리 둥글게 잘리도록 ClipRRect 추가!
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(8)), // 위쪽만 둥글게
+                              child: Image.asset( // Image.asset 또는 Image.network 사용
+                                albumImages[index], // 여기가 이미지 경로!
+                                fit: BoxFit.cover, // 컨테이너에 꽉 채우도록 설정
+                                // loadingBuilder: (BuildContext context, Widget child,
+                                //     ImageChunkEvent? loadingProgress) {
+                                //   if (loadingProgress == null) return child;
+                                //   return Center( // 이미지 로딩 중일 때 로딩 스피너 보여주기
+                                //     child: CircularProgressIndicator(
+                                //       value: loadingProgress.expectedTotalBytes != null
+                                //           ? loadingProgress.cumulativeBytesLoaded /
+                                //           loadingProgress.expectedTotalBytes!
+                                //           : null,
+                                //     ),
+                                //   );
+                                // },
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Container( // 이미지 로딩 실패 시 보여줄 기본 아이콘
+                                    color: Colors.grey.shade200,
+                                    child: const Icon(
+                                      Icons.broken_image,
+                                      size: 50,
+                                      color: Colors.grey,
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ),
