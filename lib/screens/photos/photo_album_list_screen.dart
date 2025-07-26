@@ -41,6 +41,18 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
             ),
           ),
           centerTitle: false,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, right: 10.0),
+              child: IconButton(
+                onPressed: () {
+                  debugPrint('알림 버튼 눌림!'); // 다른 사용자가 내 사진첩에 사진을 기록했을 때 알림
+                },
+                icon: const Icon(Icons.notifications_none, size: 32.0,),
+                // icon: const Icon(Icons.notifications, size:30.0, color: Colors.yellow), // 꽉 찬 종 모양 아이콘!
+              ),
+            ),
+          ],
         ),
       ),
       body: Column(
@@ -98,6 +110,8 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
           ),
 
           SizedBox(height: 20),
+
+          // TODO 앨범 우측 상단 Pined 기능 구현
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -162,10 +176,19 @@ class _PhotoAlbumListScreen extends State<PhotoAlbumListScreen> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              albumTitles[index],
-                              style: const TextStyle(fontSize: 16),
-                              textAlign: TextAlign.center,
+                            child: Column(
+                              children: [
+                                Text(
+                                  albumTitles[index],
+                                  style: const TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.center,
+                                ),
+                                Text(
+                                  '2024.01 ~ 2025.05', // 앨범 생성 일자 ~ 마지막 사진 업데이트 일자
+                                  style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
                             ),
                           ),
                         ],

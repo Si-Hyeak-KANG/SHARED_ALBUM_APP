@@ -9,7 +9,7 @@ class EnterOtherAlbumNumScreen extends StatelessWidget {
     return Scaffold(
       appBar: CommonAppBarWithTitle(
         titleText: "사진 찍어주기",
-        isActions: true,
+        isActions: false,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),

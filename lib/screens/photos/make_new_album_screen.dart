@@ -29,7 +29,7 @@ class _MakeNewAlbumScreenState extends State<MakeNewAlbumScreen> {
     return Scaffold(
       appBar: CommonAppBarWithTitle(
         titleText: "사진첩 만들기",
-        isActions: true,
+        isActions: false,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -39,14 +39,45 @@ class _MakeNewAlbumScreenState extends State<MakeNewAlbumScreen> {
             const SizedBox(height: 200),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Center(
-                child: SizedBox(
-                  child: TextFormField(
-                    controller: _albumTitleController,
-                    decoration: InputDecoration(labelText: '사진첩 제목'),
-                    textInputAction: TextInputAction.next,
+              child: Column(
+                children: [
+                  Center(
+                    child: SizedBox(
+                      child: TextFormField(
+                        controller: _albumTitleController,
+                        decoration: InputDecoration(labelText: '사진첩 제목'),
+                        textInputAction: TextInputAction.next,
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 20),
+                  Center(
+                    child: SizedBox(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          filled: false,
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Colors.grey.shade400, width: 1.0),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(
+                            vertical: 18,
+                            horizontal: 14,
+                          ),
+                          hintStyle: TextStyle(
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                        maxLength: 50,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(

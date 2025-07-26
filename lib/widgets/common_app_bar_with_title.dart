@@ -22,20 +22,11 @@ class CommonAppBarWithTitle extends StatelessWidget
         ),
       ),
       centerTitle: true,
-      actions: isActions
-          ? [
-              IconButton(
-                icon: const Icon(Icons.menu), // 설정 아이콘! ⚙️
-                onPressed: () {
-                  print('설정 버튼 눌림!');
-                },
-              ),
-            ]
-          : null,
+      actions: isActions ? [] : null, // TODO 검색, 알림
     );
   }
 
   @override
   Size get preferredSize =>
-      const Size.fromHeight(kToolbarHeight); // AppBar의 기본 높이!
+      const Size.fromHeight(kToolbarHeight); // AppBar 기본 높이
 }

@@ -46,7 +46,8 @@ class _PhotoAlbumScreenState extends State<PhotoAlbumScreen> {
   // 스크롤 리스너 함수
   void _scrollListener() {
     // 현재 스크롤 위치가 최대 스크롤 위치에 거의 도달했을 때
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
       // 로딩 중이 아니고, 더 로드할 데이터가 남아있으면!
       if (!_isLoading && _hasMore) {
         _fetchPhotos(); // 데이터 로드!
@@ -76,7 +77,8 @@ class _PhotoAlbumScreenState extends State<PhotoAlbumScreen> {
       _photos.addAll(newPhotos);
       _currentPage++;
       _isLoading = false;
-      if (newPhotos.length < _itemsPerPage || _photos.length >= totalMockPhotos) {
+      if (newPhotos.length < _itemsPerPage ||
+          _photos.length >= totalMockPhotos) {
         _hasMore = false;
       }
     });
@@ -84,15 +86,53 @@ class _PhotoAlbumScreenState extends State<PhotoAlbumScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double cameraBoxHeight = 76.0; // 이전에 설정했던 높이!
+    final double cameraBoxHeight = 76.0;
 
     return Scaffold(
       appBar: CommonAppBarWithTitle(
         titleText: widget.albumTitle,
-        isActions: true,
+        isActions: false,
+      ),
+      endDrawer: Drawer(
+        child: Container(
+          color: Colors.white,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              const SizedBox(
+                height: 100,
+              ),
+              ListTile(
+                leading: const Icon(Icons.share_rounded),
+                title: const Text('코드 및 QR 공유'),
+                onTap: () {
+                  debugPrint('코드 및 QR 공유 탭!');
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.import_export_rounded),
+                title: const Text('사진 추출'),
+                onTap: () {
+                  debugPrint('사진추출!');
+                },
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(
+                  Icons.remove_circle_rounded,
+                  color: Colors.redAccent,
+                ),
+                title: const Text('사진첩 삭제'),
+                onTap: () {
+                  debugPrint('사진첩 삭제!');
+                },
+              ),
+            ],
+          ),
+        ),
       ),
       body: CustomScrollView(
-        controller: _scrollController, // ✨ 여기! 스크롤 컨트롤러 연결!
+        controller: _scrollController,
         slivers: [
           SliverToBoxAdapter(
             child: Stack(
@@ -102,7 +142,7 @@ class _PhotoAlbumScreenState extends State<PhotoAlbumScreen> {
                   color: Colors.grey[300],
                   child: Center(
                       child:
-                      Icon(Icons.image, size: 80, color: Colors.grey[600])),
+                          Icon(Icons.image, size: 80, color: Colors.grey[600])),
                 ),
                 Positioned(
                   bottom: 16,
@@ -145,7 +185,7 @@ class _PhotoAlbumScreenState extends State<PhotoAlbumScreen> {
                       Spacer(),
                       Text('2025.04.18',
                           style:
-                          TextStyle(fontSize: 14, color: Colors.grey[600])),
+                              TextStyle(fontSize: 14, color: Colors.grey[600])),
                     ],
                   ),
                   SizedBox(height: 10),
@@ -187,7 +227,8 @@ class _PhotoAlbumScreenState extends State<PhotoAlbumScreen> {
                     },
                     style: OutlinedButton.styleFrom(
                       shape: CircleBorder(),
-                      side: BorderSide(color: Colors.blueGrey.shade200, width: 1),
+                      side:
+                          BorderSide(color: Colors.blueGrey.shade200, width: 1),
                       padding: EdgeInsets.all(12),
                     ),
                     child: Icon(Icons.camera_alt_outlined,
@@ -202,7 +243,7 @@ class _PhotoAlbumScreenState extends State<PhotoAlbumScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 0),
             sliver: SliverGrid(
               delegate: SliverChildBuilderDelegate(
-                    (context, index) {
+                (context, index) {
                   // 여기서는 실제 사진 대신 'Photo N' 같은 텍스트를 표시
                   return Stack(
                     children: [
@@ -210,16 +251,19 @@ class _PhotoAlbumScreenState extends State<PhotoAlbumScreen> {
                         color: Colors.grey[300],
                         child: Center(
                             child: Text(
-                              _photos[index], // ✨ 로드된 사진 데이터를 표시
-                              style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                            )),
+                          _photos[index], // ✨ 로드된 사진 데이터를 표시
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        )),
                       ),
                       if (index % 4 == 0) // 예시 로직 (하트 아이콘)
                         Positioned(
                           top: 4,
                           right: 4,
                           child:
-                          Icon(Icons.favorite, color: Colors.red, size: 18),
+                              Icon(Icons.favorite, color: Colors.red, size: 18),
                         ),
                     ],
                   );
@@ -237,9 +281,9 @@ class _PhotoAlbumScreenState extends State<PhotoAlbumScreen> {
           SliverToBoxAdapter(
             child: _isLoading && _hasMore
                 ? Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Center(child: CircularProgressIndicator()),
-            )
+                    padding: const EdgeInsets.all(20.0),
+                    child: Center(child: CircularProgressIndicator()),
+                  )
                 : const SizedBox.shrink(),
           ),
         ],

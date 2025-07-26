@@ -45,5 +45,12 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSLocalNetworkUsageDescription</key>
+    <string>Debugging and hot reloading require local network access.</string>
+    <key>NSBonjourServices</key>
+    <array>
+    	<string>_dartobservatory._tcp</string>
+    	<string>_fluttertools._tcp</string>
+    </array>
 </dict>
 </plist>
