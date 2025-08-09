@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:gachi_ganjik/screens/common/main_screen.dart';
+
+import 'login_page.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -33,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
       context,
       MaterialPageRoute(
         builder: (context) =>
-            MainScreen(),
+            LoginPage(),
       ),
     );
   }
@@ -42,12 +43,26 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Image.asset(
-          'assets/images/app_logo.png',
-            width: 300,
-            fit: BoxFit.contain,
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Center(
+              child: Image.asset(
+                'assets/images/app_logo.png',
+                  width: 300,
+                  fit: BoxFit.contain,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 60.0),
+            child: const Text(
+              'version 1.0.0',
+              style: TextStyle(fontSize: 16, color: Colors.grey),
+            ),
+          ),
+        ],
       ),
     );
   }

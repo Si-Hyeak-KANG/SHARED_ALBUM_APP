@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gachi_ganjik/screens/common/main_screen.dart';
 import 'package:gachi_ganjik/screens/common/splash_screen.dart';
 
 void main() {
@@ -24,8 +25,14 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         title: '같이간직',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.red,
         ),
+        onGenerateRoute: (settings) {
+          switch (settings.name) {
+            case '/main':
+              return MaterialPageRoute(builder: (context) => const MainScreen());
+          }
+        },
         home: const SplashScreen(),
       );
   }
